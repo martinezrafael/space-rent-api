@@ -19,7 +19,7 @@ const eventSchema = new Schema(
             required: true,
         },
         space: { type: Schema.Types.ObjectId, ref: "Space" },
-        organizers: { type: Schema.Types.ObjectId, ref: "user" },
+        organizers: { type: Schema.Types.ObjectId, ref: "User" },
     },
     {
         timestamps: true,
