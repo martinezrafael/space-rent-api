@@ -5,7 +5,7 @@ const spaceSchema = new Schema(
         name: {
             type: String,
             required: true,
-            unique: true
+            unique: true,
         },
         adress: {
             street: String,
@@ -15,9 +15,11 @@ const spaceSchema = new Schema(
         size: String,
         purposes: Array,
         user: { type: Schema.Types.ObjectId, ref: "User" },
-        comments: { type: Schema.Types.ObjectId, ref: "Comments" }
-
+        comments: { type: Schema.Types.ObjectId, ref: "Comment" },
+    },
+    {
+        timestamps: true,
     }
-)
+);
 
-module.exports = model('Space', spaceSchema);
+module.exports = model("Space", spaceSchema);
