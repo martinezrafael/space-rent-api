@@ -12,8 +12,8 @@ const userSchema = new Schema(
             required: true,
         },
         biography: String,
-        Spaces: { type: Schema.Types.ObjectId, ref: "Space" },
-        Events: { type: Schema.Types.ObjectId, ref: "Event" },
+        spaces: { type: Schema.Types.ObjectId, ref: "Space" },
+        events: { type: Schema.Types.ObjectId, ref: "Event" },
     },
     {
         timestamps: true,
