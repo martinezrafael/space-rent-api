@@ -7,6 +7,9 @@ const userSchema = new Schema(
             required: true,
             unique: true,
         },
+        image: {
+            type: String,
+        },
         passwordHash: {
             type: String,
             required: true,

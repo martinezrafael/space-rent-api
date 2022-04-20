@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User.model');
 
 router.post('/signup', async (req, res) => {
-    const { username, password, biography, spaces, events } = req.body;
+    const { username, password, biography, image, spaces, events } = req.body;
 
     try {
         if(!username || !password){
@@ -27,6 +27,7 @@ router.post('/signup', async (req, res) => {
             username,
             passwordHash,
             biography,
+            image,
             spaces,
             events
         })
@@ -41,17 +42,17 @@ router.post('/login', async (req, res) => {
     const { username, password } = req.body;
     try {
         if(!username || !password){
-            throw new Error('Preencha as informações para acessar');
+            throw new Error('Missing information');
         }
 
         const userFromDb = await User.findOne({username})
         if(!userFromDb){
-            throw new Error('Nome de usuário ou senha incorretos');
+            throw new Error('Wrong username or password');
         }
 
         const validation = bcrypt.compareSync(password, userFromDb.passwordHash);
         if(!validation) {
-            throw new Error('Nome de usuário ou senha incorretos')
+            throw new Error('Wrong username or password')
         }
         
         const payload = {

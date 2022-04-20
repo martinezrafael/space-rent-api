@@ -7,14 +7,22 @@ const spaceSchema = new Schema(
             required: true,
             unique: true,
         },
+        description: {
+            type: String
+        },
+        imageURL: {
+            type: String
+        },
         adress: {
             street: String,
             city: String,
             zipcode: String,
         },
-        size: String,
+        size: {
+            type: String
+        },
         purposes: Array,
-        user: { type: Schema.Types.ObjectId, ref: "User" },
+        userId: { type: Schema.Types.ObjectId, ref: "User" },
         comments: { type: Schema.Types.ObjectId, ref: "Comment" },
     },
     {
