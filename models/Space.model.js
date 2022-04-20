@@ -23,7 +23,7 @@ const spaceSchema = new Schema(
         },
         purposes: Array,
         userId: { type: Schema.Types.ObjectId, ref: "User" },
-        comments: { type: Schema.Types.ObjectId, ref: "Comment" },
+        comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}]
     },
     {
         timestamps: true,

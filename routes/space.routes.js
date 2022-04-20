@@ -2,6 +2,7 @@ const { Router } = require('express');
 const router = Router();
 
 const Space = require('../models/Space.model');
+const Comment = require('../models/Comment.model')
 
 router.post('/', async (req, res) => {
     const { id } = req.user;
@@ -46,6 +47,7 @@ router.delete('/:spaceId', async(req, res) => {
     const { spaceId } = req.params;
     try {
         await Space.findByIdAndDelete(spaceId)
+        await Comment.deleteMany({spaceId})
         res.status(204).json()
     } catch (error) {
         res.status(500).json({message: "Error deleting space", error: error});
