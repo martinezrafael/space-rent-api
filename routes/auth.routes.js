@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User.model');
 
 router.post('/signup', async (req, res) => {
-    const { username, password, biography, image, spaces, events } = req.body;
+    const { username, password, biography } = req.body;
 
     try {
         if(!username || !password){
@@ -26,10 +26,7 @@ router.post('/signup', async (req, res) => {
         await User.create({
             username,
             passwordHash,
-            biography,
-            image,
-            spaces,
-            events
+            biography
         })
 
         res.status(201).json('User created!')

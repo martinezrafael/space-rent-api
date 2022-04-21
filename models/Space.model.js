@@ -5,25 +5,36 @@ const spaceSchema = new Schema(
         name: {
             type: String,
             required: true,
-            unique: true,
         },
         description: {
-            type: String
-        },
-        imageURL: {
-            type: String
+            type: String,
+            required: true,
         },
         adress: {
             street: String,
+            number: String,
+            complement: String,
+            district: String,
             city: String,
+            state: String,
             zipcode: String,
         },
         size: {
-            type: String
+            type: String,
         },
-        purposes: Array,
-        userId: { type: Schema.Types.ObjectId, ref: "User" },
-        comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}]
+        purposes: [],
+        images: [],
+        price: {
+            type: Number,
+        },
+        userId: {
+            type: Schema.Types.ObjectId,
+            ref: 'User',
+        },
+        comments: {
+            type: Schema.Types.ObjectId,
+            ref: 'Comment',
+        },
     },
     {
         timestamps: true,
@@ -31,3 +42,4 @@ const spaceSchema = new Schema(
 );
 
 module.exports = model("Space", spaceSchema);
+ 

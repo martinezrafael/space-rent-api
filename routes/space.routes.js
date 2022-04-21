@@ -26,7 +26,7 @@ router.get('/', async(req, res) => {
 router.get('/:spaceId', async (req, res) => {
     const { spaceId } = req.params;
     try {
-        const space = await Space.find(spaceId)
+        const space = await Space.findById(spaceId)
         res.status(200).json(space)
     } catch (error) {
         res.status(500).json({message: "Error finding space", error: error});

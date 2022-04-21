@@ -7,20 +7,18 @@ const userSchema = new Schema(
             required: true,
             unique: true,
         },
-        image: {
-            type: String,
-        },
         passwordHash: {
             type: String,
             required: true,
         },
-        biography: String,
-        spaces: { type: Schema.Types.ObjectId, ref: "Space" },
-        events: { type: Schema.Types.ObjectId, ref: "Event" },
+        biography: {
+            type: String,
+            required: true,
+        },
     },
     {
         timestamps: true,
     }
 );
 
-module.exports = model('User', userSchema);
+module.exports = model("User", userSchema);

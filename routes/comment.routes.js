@@ -9,8 +9,8 @@ router.post('/:spaceId', async (req, res) => {
     const { spaceId } = req.params;
     const { id } = req.user;
     try {
-        const room = await Space.findById(spaceId);
-        if(room.userId == id){
+        const space = await Space.findById(spaceId);
+        if(space.userId == id){
             res.status(400).json({message: "User can't create a review on own space"})
             return;
         }
