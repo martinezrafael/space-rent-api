@@ -17,6 +17,8 @@ app.use(require('./middlewares/auth.middleware'));
 
 app.use('/spaces', require('./routes/space.routes'))
 
+app.use('/events', require('./routes/event.routes'));
+
 app.use('/comments', require('./routes/comment.routes'));
 
 app.listen(process.env.PORT, () =>
