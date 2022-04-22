@@ -11,6 +11,9 @@ const userSchema = new Schema(
             type: String,
             required: true,
         },
+        image: {
+            type: String
+        },
         biography: {
             type: String,
             required: true,

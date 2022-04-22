@@ -15,6 +15,8 @@ app.use('/auth', require('./routes/auth.routes'));
 
 app.use(require('./middlewares/auth.middleware'));
 
+app.use(require('./routes/user.routes'))
+
 app.use('/spaces', require('./routes/space.routes'))
 
 app.use('/events', require('./routes/event.routes'));
