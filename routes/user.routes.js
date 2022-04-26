@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
     }
 });
 
-router.put("/image", async (req, res) => {
+router.put("/image", uploadCloud.single('image'), async (req, res) => {
     const userId = req.user.id;
     const { path } = req.file;
     try {
@@ -25,7 +25,7 @@ router.put("/image", async (req, res) => {
             userId,
             { image: path },
             { new: true }
-        );
+        ).select('-passwordHash')
         res.status(200).json(updatedUser);
     } catch (error) {
         res.status(500).json({ error: error.message });
