@@ -7,7 +7,7 @@ const Comment = require('../models/Comment.model')
 router.post('/', async (req, res) => {
     const { id } = req.user;
     try {
-        const space = await Space.create({ ...req.body, userId: id });
+        const space = await Space.create({ ...req.body, userId: id })
         res.status(200).json(space);
     } catch (error) {
         res.status(500).json({message: "Error creating space", error: error})
@@ -15,8 +15,12 @@ router.post('/', async (req, res) => {
 })
 
 router.get('/', async(req, res) => {
+    const { spaceId } = req.params;
     try {
-        const spaces = await Space.find();
+        const spaces = await Space.find().populate(
+            "userId",
+            "username comments"
+        )
         res.status(200).json(spaces);
     } catch (error) {
         res.status(500).json({message: "Error finding spaces", error: error});

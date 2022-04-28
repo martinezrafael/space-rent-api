@@ -14,7 +14,7 @@ const spaceSchema = new Schema(
             street: String,
             number: String,
             complement: String,
-            district: String,
+            neighborhood: String,
             city: String,
             state: String,
             zipcode: String,
@@ -31,10 +31,10 @@ const spaceSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: 'User',
         },
-        comments: {
+        comments: [{
             type: Schema.Types.ObjectId,
             ref: 'Comment',
-        },
+        }],
     },
     {
         timestamps: true,
