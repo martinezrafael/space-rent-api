@@ -10,7 +10,7 @@ const cors = require("cors");
 app.use(
     cors({
         credentials: true,
-        origin: ["http://localhost:3000"],
+        origin: ["http://localhost:3000"],//colocar como env e colocar o endereço do front
     })
 );
 
@@ -20,7 +20,7 @@ app.use("/auth", require("./routes/auth.routes"));
 
 app.use(require("./middlewares/auth.middleware"));
 
-app.use("/user", require("./routes/user.routes"));
+app.use("/users", require("./routes/user.routes"));
 
 app.use("/spaces", require("./routes/space.routes"));
 

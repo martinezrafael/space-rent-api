@@ -7,9 +7,9 @@ const router = Router();
 
 router.post('/:spaceId', async (req, res) => {
     const { spaceId } = req.params;
-    const { id } = req.user;
+    const { id: userId } = req.user;
     try {
-        const event = await Event.create({ ...req.body, userId: id, spaceId });
+        const event = await Event.create({ ...req.body, userId, spaceId });
         res.status(200).json(event);
     } catch (error) {
         res.status(500)._construct({message: "Error creating event", error})

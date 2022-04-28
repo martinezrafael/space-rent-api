@@ -33,16 +33,6 @@ router.get('/:spaceId', async (req, res) => {
     }
 })
 
-/*router.get('/', async (req, res) => {
-    const { nameSpace } = req.query;
-    console.log(nameSpace);
-    try {
-        const space = await Space.find(nameSpace)
-        res.status(200).json(space)
-    } catch (error) {
-        res.status(500).json({message: "Error finding space", error: error});
-    }
-})*/
 
 router.put('/:spaceId', async (req, res) => {
     const { spaceId } = req.params;
